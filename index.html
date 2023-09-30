@@ -1,14 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>Web Boilerplate</title>
+    <meta charset="utf-8" />
+    <script type="module" src="/src/index.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0px;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-    <script type="module" src="/src/index.js"></script>
-    <!-- Example of loading a static file from public/-->
-    <img src="test.jpeg">
+    <div id="cesiumContainer" style="width: 100%; height: 100%"></div>
+    <script type="text/javascript">
+      // For interactively setting a specific camera view on init
+      function getCameraFlyTo() {
+        var camera = viewer.camera;
+        var position = camera.position;
+        var direction = camera.direction;
+        var up = camera.up;
+        var cameraString =
+          "{\n\
+              destination : new Cesium.Cartesian3(" +
+          position.x +
+          ", " +
+          position.y +
+          ", " +
+          position.z +
+          "),\n\
+              orientation : {\n\
+                  direction : new Cesium.Cartesian3(" +
+          direction.x +
+          ", " +
+          direction.y +
+          ", " +
+          direction.z +
+          "),\n\
+                  up : new Cesium.Cartesian3(" +
+          up.x +
+          ", " +
+          up.y +
+          ", " +
+          up.z +
+          "),\n\
+              },\n\
+              duration : 3\n\
+          }";
+        return cameraString;
+      }
+      window.getCameraFlyTo = getCameraFlyTo;
+    </script>
   </body>
 </html>
