@@ -1,9 +1,8 @@
-# Web Boilerplate
+# Satcamp Bike Viz
 
-My boilerplate setup for creative web projects.
+To run locally:
 
-Install yarn: https://yarnpkg.com/.
+* `pnpm install`
+* `pnpm dev`
 
-Then run `yarn` to install dependencies and `yarn dev` to run. It'll be running on [localhost:3000](http://localhost:3000/).
-
-The app will autoreload when any changes are made.
+`pnpm build` to build a static site to host/deploy.
