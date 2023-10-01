@@ -26,6 +26,7 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
 
 const urlParams = new URLSearchParams(window.location.search);
 let dataPrefix = urlParams.get('data');
+const dataPrefixUndefined = dataPrefix == undefined
 if (dataPrefix == undefined) {
   dataPrefix = "bike_data_09_13_2023"
 }
@@ -55,13 +56,13 @@ for (let name in geojsonFiles) {
   const dotColor = adjustHexColor(lineColor, 50, 0)
   const dot = addDynamicPoint(viewer, sampledPositionProperty, label, dotColor)
 
-  if (dataPrefix != undefined && !viewer.trackedEntity) {
+  if (!dataPrefixUndefined && !viewer.trackedEntity) {
     viewer.trackedEntity = dot
   }
 }
 
 // Go to hardcoded view only if dataPrefix isn't provided
-if (dataPrefix == undefined) {
+if (dataPrefixUndefined) {
   viewer.camera.flyTo({
     destination: new Cesium.Cartesian3(
       -1309406.0415927342,
